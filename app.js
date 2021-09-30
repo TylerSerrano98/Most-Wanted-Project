@@ -12,10 +12,10 @@ function app(people){
   let searchResults;
   switch(searchType){
     case 'yes':
-      searchResults = searchByName(people);
-      break;
+    searchResults = searchByName(people);
+      break; 
     case 'no':
-      searchResults = searchByEyeColor(people);
+    searchResults = searchByTraits(people);
       break;
       default:
     app(people); // restart app
@@ -65,6 +65,26 @@ function mainMenu(person, people){
 /////////////////////////////////////////////////////////////////
 //#region 
 
+function searchByTraits(people){
+  let list = '';
+  let filtered = (people);
+
+  // filtered = searchByName(people);
+  filtered = searchByEyeColor(filtered);
+  filtered = searchByGender(filtered);
+  filtered = searchByDateOfBirth(filtered);
+  filtered = searchByHeight(filtered);
+  filtered = searchByOccupation(filtered);
+  filtered = searchByWeight(filtered);
+  
+  if(filtered !== 22){
+    // console.log('no one to display');
+  }
+  else{
+   displayPeople(filtered)
+  }
+}
+
 //nearly finished function used to search through an array of people to find matching first and last name and return a SINGLE person object.
 function searchByName(people){
   let firstName = promptFor("What is the person's first name?", autoValid);
@@ -102,7 +122,7 @@ function searchByEyeColor(people){
 }
 
 function searchByGender(people){
-  let gender = promtFor("What is the person's gender?", autoValid);
+  let gender = promptFor("What is the person's gender?", autoValid);
 
   let foundPerson = people.filter(function(potentialMatch){
     if(potentialMatch.gender === gender){
