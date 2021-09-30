@@ -101,6 +101,50 @@ function searchByEyeColor(people){
 
 }
 
+function searchByGender(people){
+  let gender = promtFor("What is the person's gender?", autoValid);
+
+  let foundPerson = people.filter(function(potentialMatch){
+    if(potentialMatch.gender === gender){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  console.log(foundPerson)
+  return foundPerson;
+}
+
+function searchByDateOfBirth(people){
+  let dateOfBirth = promptFor("what is the person's DOB?", autoValid);
+
+  let foundPerson = people.filter(function(potentialMatch){
+    if(potentialMatch.dateOfBirth === dateOfBirth){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  console.log(foundPerson)
+  return foundPerson;
+}
+
+function searchByHeight(people){
+  let personHeight = promptFor("what is the person's height in inches?", autoValid);
+
+  let foundPerson = people.filter(function(potentialMatch){
+    if(potentialMatch.personHeight === personHeight){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  console.log(foundPerson)
+  return foundPerson;
+}
 
 //TODO: add other trait filter functions here.
 
