@@ -160,19 +160,19 @@ function searchByOccupation(people){
   return foundPerson;
 }
 
-// function searchByGender(people){
-//   let gender = promptFor("What is the person's gender?", autoValid);
-//   let foundPerson = people.filter(function(potentialMatch){
-//     if(potentialMatch.gender === gender){
-//       return true;
-//     }
-//     else{
-//       return false;
-//     }
-//   })
-//   console.log(foundPerson);
-//   return foundPerson;
-// }
+function searchByWeight(people){
+  let weight = promptFor("What is the person's weight in LBS?", autoValid);
+  let foundPerson = people.filter(function (potentialMatch){
+    if(potentialMatch.weight === weight){
+      return true;
+    }
+    else {
+      return false;
+    }
+  })
+  console.log(foundPerson);
+  return foundPerson;
+}
 
 //TODO: add other trait filter functions here.
 
