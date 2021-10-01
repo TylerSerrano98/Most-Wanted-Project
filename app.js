@@ -15,12 +15,13 @@ function app(people){
     searchResults = searchByName(people);
       break; 
     case 'no':
-    searchResults = searchByTraits(people);
+     searchResults = searchByTraits(people);
       break;
       default:
     app(people); // restart app
       break;
   }
+  
   
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
   mainMenu(searchResults, people);
@@ -69,7 +70,6 @@ function searchByTraits(people){
   let list = '';
   let filtered = (people);
 
-  // filtered = searchByName(people);
   filtered = searchByEyeColor(filtered);
   filtered = searchByGender(filtered);
   filtered = searchByDateOfBirth(filtered);
@@ -77,8 +77,8 @@ function searchByTraits(people){
   filtered = searchByOccupation(filtered);
   filtered = searchByWeight(filtered);
   
-  if(filtered !== 22){
-    // console.log('no one to display');
+  if(filtered.length !== 22){
+    
   }
   else{
    displayPeople(filtered)
@@ -104,95 +104,136 @@ function searchByName(people){
   return foundPerson[0];
 }
 
+
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people){
-   let eyeColor = promptFor("What is the person's eye color?", autoValid);
+   let eyeColor;
+   if(confirm('if eye color is known: Select Ok, otherwise Select Cancel') == true){
+    eyeColor = promptFor("What is the person's eye color?", autoValid)
+    let foundPerson = people.filter(function(potentialMatch){
+      if(potentialMatch.eyeColor === eyeColor){
+        return true;
+      }
+      else{
+        return false;
+      }
+    })
+   console.log(foundPerson)
+   return foundPerson;
+   }
+   else{
+     return people;
+   }
+  }
 
-   let foundPerson = people.filter(function(potentialMatch){
-     if(potentialMatch.eyeColor === eyeColor){
-       return true;
-     }
-     else{
-       return false;
-     }
-   })
-  console.log(foundPerson)
-  return foundPerson;
-
-}
 
 function searchByGender(people){
-  let gender = promptFor("What is the person's gender?", autoValid);
-
+  let gender;
+  if(confirm('if gender is known: Select Ok, otherwise Select Cancel') == true){
+  gender = promptFor("What is the person's gender?", autoValid);
   let foundPerson = people.filter(function(potentialMatch){
     if(potentialMatch.gender === gender){
       return true;
-    }
-    else{
-      return false;
-    }
-  })
-  console.log(foundPerson)
-  return foundPerson;
+      }
+      else{
+        return false;
+      }
+    })
+    console.log(foundPerson)
+    return foundPerson;
+  }
+  else{
+    return people;
+  }
 }
+  
+ 
 
 function searchByDateOfBirth(people){
-  let dateOfBirth = promptFor("what is the person's DOB?", autoValid);
-
-  let foundPerson = people.filter(function(potentialMatch){
-    if(potentialMatch.dateOfBirth === dateOfBirth){
-      return true;
-    }
-    else{
-      return false;
-    }
-  })
-  console.log(foundPerson)
-  return foundPerson;
+  let dateOfBirth;
+  if(confirm('if DOB is known: Select Ok, otherwise Select Cancel') == true){
+    dateOfBirth = promptFor("what is the person's DOB?", autoValid);
+    let foundPerson = people.filter(function(potentialMatch){
+      if(potentialMatch.dateOfBirth === dateOfBirth){
+        return true;
+      }
+      else{
+        return false;
+      }
+    })
+    console.log(foundPerson)
+    return foundPerson;
+  }
+  else{
+    return people;
+  }
 }
+  
 
 function searchByHeight(people){
-  let personHeight = promptFor("what is the person's height in inches?", autoValid);
-
-  let foundPerson = people.filter(function(potentialMatch){
-    if(potentialMatch.personHeight === personHeight){
-      return true;
-    }
-    else{
-      return false;
-    }
-  })
-  console.log(foundPerson)
-  return foundPerson;
+  let personHeight;
+  if(confirm('if Height is known: Select Ok, otherwise Select Cancel') == true){
+    personHeight = promptFor("what is the person's height in inches?", autoValid);
+    let foundPerson = people.filter(function(potentialMatch){
+      if(potentialMatch.personHeight === personHeight){
+        return true;
+      }
+      else{
+        return false;
+      }
+    })
+    console.log(foundPerson)
+    return foundPerson;
+  }
+  else{
+    return people;
+  }
 }
+  
+ 
 
 function searchByOccupation(people){
-  let occupation = promptFor("What is the peron's occupation?", autoValid);
-  let foundPerson = people.filter(function (potentialMatch) {
-    if(potentialMatch.occupation === occupation){
-      return true;
-    }    
-    else{
-      return false;
-    }
-  })
-  console.log(foundPerson);
-  return foundPerson;
+  let occupation;
+  if(confirm('if Occupation is known: Select Ok, otherwise Select Cancel') == true){
+    occupation = promptFor("What is the peron's occupation?", autoValid);
+    let foundPerson = people.filter(function(potentialMatch){
+      if(potentialMatch.occupation === occupation){
+        return true;
+      }    
+      else{
+        return false;
+      }
+    })
+    console.log(foundPerson);
+    return foundPerson;
+  }
+  else{
+    return people;
+  }
 }
+  
+ 
 
 function searchByWeight(people){
-  let weight = promptFor("What is the person's weight in LBS?", autoValid);
-  let foundPerson = people.filter(function (potentialMatch){
-    if(potentialMatch.weight === weight){
-      return true;
-    }
-    else {
-      return false;
-    }
-  })
-  console.log(foundPerson);
-  return foundPerson;
+  let weight;
+  if(confirm('if Weight is known: Select Ok, otherwise Select Cancel') == true){
+    weight = promptFor("What is the person's weight in LBS?", autoValid);
+    let foundPerson = people.filter(function (potentialMatch){
+      if(potentialMatch.weight === weight){
+        return true;
+      }
+      else {
+        return false;
+      }
+    })
+    console.log(foundPerson);
+    return foundPerson;
+  }
+  else{
+    return people;
+  }
 }
+  
 
 //TODO: add other trait filter functions here.
 
